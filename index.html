@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Yield Test</title>
+  <title>Market Overview</title>
   <style>
     :root {
       color-scheme: light dark;
@@ -17,23 +17,18 @@
       }
     }
     * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
     body {
       background: var(--bg);
       color: var(--fg);
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      margin: 0;
-      padding: 16px;
+      display: flex;
+      justify-content: center;
+      padding: 24px 16px;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 24px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    h2 {
-      font-size: 1rem;
-      margin: 0 0 8px;
+    main {
+      width: 100%;
+      max-width: 960px;
     }
     tv-market-overview {
       display: block;
@@ -42,23 +37,10 @@
   </style>
 </head>
 <body>
-  <script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-market-overview.js"></script>
+  <main>
+    <script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-market-overview.js"></script>
 
-  <div class="grid">
-    <section>
-      <h2>Test A: FRED daily yields (2, 5, 10, 30 year)</h2>
-      <tv-market-overview symbol-sectors='[{"sectionName":"FRED","symbols":["FRED:DGS2","FRED:DGS5","FRED:DGS10","FRED:DGS30"]}]'></tv-market-overview>
-    </section>
-
-    <section>
-      <h2>Test B: CBOE yield indices (13 week, 5, 10, 30 year)</h2>
-      <tv-market-overview symbol-sectors='[{"sectionName":"CBOE","symbols":["CBOE:IRX","CBOE:FVX","CBOE:TNX","CBOE:TYX"]}]'></tv-market-overview>
-    </section>
-
-    <section>
-      <h2>Test C: ECONOMICS yields (2, 5, 10, 30 year)</h2>
-      <tv-market-overview symbol-sectors='[{"sectionName":"ECONOMICS","symbols":["ECONOMICS:US02Y","ECONOMICS:US05Y","ECONOMICS:US10Y","ECONOMICS:US30Y"]}]'></tv-market-overview>
-    </section>
-  </div>
+    <tv-market-overview symbol-sectors='[{"sectionName":"Indices","symbols":["FOREXCOM:SPXUSD","CAPITALCOM:NAS100","FOREXCOM:DJI"]},{"sectionName":"Stocks","symbols":["NASDAQ:AAPL","NASDAQ:NVDA","NASDAQ:TSLA","NASDAQ:AMD","NASDAQ:ANT","NASDAQ:MSFT","NASDAQ:AVGO","NYSE:V"]},{"sectionName":"Yields","symbols":["FRED:DGS2","FRED:DGS5","FRED:DGS10","FRED:DGS30"]}]'></tv-market-overview>
+  </main>
 </body>
 </html>
