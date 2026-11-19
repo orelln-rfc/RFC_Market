@@ -17,18 +17,23 @@
       }
     }
     * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; }
     body {
       background: var(--bg);
       color: var(--fg);
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      display: flex;
-      justify-content: center;
-      padding: 24px 16px;
+      margin: 0;
+      padding: 16px;
     }
-    main {
-      width: 100%;
-      max-width: 960px;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    h2 {
+      font-size: 1rem;
+      margin: 0 0 8px;
     }
     tv-market-overview {
       display: block;
@@ -37,10 +42,33 @@
   </style>
 </head>
 <body>
-  <main>
-    <script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-market-overview.js"></script>
+  <script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-market-overview.js"></script>
 
-    <tv-market-overview symbol-sectors='[{"sectionName":"Indices","symbols":["FOREXCOM:SPXUSD","CAPITALCOM:NAS100","FOREXCOM:DJI"]},{"sectionName":"Stocks","symbols":["NASDAQ:AAPL","NASDAQ:NVDA","NASDAQ:TSLA","NASDAQ:AMD","NASDAQ:ANT","NASDAQ:MSFT","NASDAQ:AVGO","NYSE:V"]},{"sectionName":"Bond futures CBOT","symbols":["CBOT:ZB1!","CBOT:UB1!","CBOT:ZN1!","CBOT:ZF1!"]},{"sectionName":"Bond CFDs OANDA","symbols":["OANDA:USB02YUSD","OANDA:USB05YUSD","OANDA:USB10YUSD","OANDA:USB30YUSD"]},{"sectionName":"Bond ETFs","symbols":["NASDAQ:TLT","NASDAQ:IEF","NASDAQ:SHY"]},{"sectionName":"Bond futures Eurex","symbols":["EUREX:FGBL1!","EUREX:FGBM1!"]}]'></tv-market-overview>
-  </main>
+  <div class="grid">
+    <section>
+      <h2>Stocks (original eight)</h2>
+      <tv-market-overview symbol-sectors='[{"sectionName":"Stocks","symbols":["NASDAQ:AAPL","NASDAQ:NVDA","NASDAQ:TSLA","NASDAQ:AMD","NASDAQ:ANT","NASDAQ:MSFT","NASDAQ:AVGO","NYSE:V"]}]'></tv-market-overview>
+    </section>
+
+    <section>
+      <h2>Test 1: CBOT Treasury futures</h2>
+      <tv-market-overview symbol-sectors='[{"sectionName":"CBOT","symbols":["CBOT:ZB1!","CBOT:UB1!","CBOT:ZN1!","CBOT:ZF1!"]}]'></tv-market-overview>
+    </section>
+
+    <section>
+      <h2>Test 2: OANDA bond CFDs</h2>
+      <tv-market-overview symbol-sectors='[{"sectionName":"OANDA","symbols":["OANDA:USB02YUSD","OANDA:USB05YUSD","OANDA:USB10YUSD","OANDA:USB30YUSD"]}]'></tv-market-overview>
+    </section>
+
+    <section>
+      <h2>Test 3: Treasury ETFs</h2>
+      <tv-market-overview symbol-sectors='[{"sectionName":"ETFs","symbols":["NASDAQ:TLT","NASDAQ:IEF","NASDAQ:SHY"]}]'></tv-market-overview>
+    </section>
+
+    <section>
+      <h2>Test 4: Eurex Bund futures</h2>
+      <tv-market-overview symbol-sectors='[{"sectionName":"Eurex","symbols":["EUREX:FGBL1!","EUREX:FGBM1!"]}]'></tv-market-overview>
+    </section>
+  </div>
 </body>
 </html>
